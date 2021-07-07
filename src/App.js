@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import { Counter } from './features/counter/Counter';
-import { SearchCity } from './Components/SearchBar';
+import { SearchBar } from './Components/SearchBar';
 import './App.css';
 
 function App() {
