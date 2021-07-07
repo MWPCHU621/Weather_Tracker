@@ -1,13 +1,13 @@
 import React from 'react';
 import logo from './logo.svg';
 import { Counter } from './features/counter/Counter';
-import { SearchCity } from './Components/searchCity';
+import { SearchCity } from './Components/SearchBar';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <SearchCity />
+      <SearchBar />
     </div>
   );
 }

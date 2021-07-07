@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 
 
-export function SearchCity() {
+export function SearchBar() {
     // const cityList = useSelector(fetchCityList);
     const dispatch = useDispatch();
 
