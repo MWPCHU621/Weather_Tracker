@@ -1,13 +1,18 @@
 import React from 'react';
 import logo from './logo.svg';
 import { Counter } from './features/counter/Counter';
-import { SearchBar } from './Components/SearchBar';
+import { CitySearchBar } from './Components/SearchBar';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <SearchBar />
+      <div className="Left_Container">
+        <CitySearchBar />
+      </div>
+      <div className="Right_Container">
+        
+      </div>
     </div>
   );
 }

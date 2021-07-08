@@ -1,41 +1,47 @@
-import { useSelector, useDispatch } from 'react-redux';
-
+import { useDispatch } from 'react-redux';
+import { useState } from 'react';
 import {addCity} from '../Reducers/SearchBarSlice';
 
-import { Input, Button, FormControl} from '@material-ui/core';
+import SearchBar from 'material-ui-search-bar';
 
 
-export function SearchBar() {
+export function CitySearchBar() {
     // const cityList = useSelector(getCityList);
     const dispatch = useDispatch();
 
+    const [value, setValue] = useState("");
+
     return (
         <div>
-             {/* <div class="searchBar_container">
-                 {/* need to swap to material UI for better form dealings */}
-                 {/* <form>
-                     <input type="text" placeholder="Type City Name" name="searchBar"></input>
-                     <button onClick={(e) => console.log(searchCity(e))}><i class="fas fa-plus"></i></button>
-                 </form>
-             </div> */}
-
-            <div class="searchBar_container">
-                <form>
-                    <FormControl>
-                        <Input placeholder="Type City Name"/>
-                        <Button >plus icon </Button>
-                    </FormControl>
-                </form>
-                
+            <div className="searchBar_container">
+                <SearchBar
+                    value={value}
+                    onChange={(newValue) => setValue(newValue)}
+                    onRequestSearch={() => searchCity(value)} 
+                />
             </div>
-
         </div>
     );
 
     //will remove once above form is swapped for form from material UI
-    function searchCity (e) {
-        e.preventDefault();
-        dispatch(addCity(e));
+    function searchCity (city) {
+        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=c51223c219d6aec8cb8c5210449bd859`)
+            .then(res => res.json())
+            .then(
+                (data) => {
+                    //creating new object to be stored in city List for display in left container.
+                    let cityData = {
+                        name: data.name,
+                        weather: data.weather[0].description,
+                        temperature: (Math.round(data.main.temp) + "C"),
+                    }
+            
+                    dispatch(addCity(cityData));
+                },
+                (error) => {
+                    console.log("INVALID CITY", error);
+                }
+            )
     }
 
 }
