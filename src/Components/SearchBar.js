@@ -1,6 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import {addCity} from '../Reducers/SearchBarSlice';
+import { getCityInfo } from '../Helper/ApiCalls';
 
 import SearchBar from 'material-ui-search-bar';
 
@@ -42,6 +43,21 @@ export function CitySearchBar() {
                     console.log("INVALID CITY", error);
                 }
             )
+
+        // let data = getCityInfo(city);
+
+        // console.log(data);
+        
+        // // let cityData = {
+        // //     name:data.name,
+        // //     weather: data.weather[0].description,
+        // //     temp: (Math.round(data.main.temp) + "C"),
+        // // };
+
+    
+
+
+        // dispatch(addCity(cityData));
     }
 
 }
