@@ -23,7 +23,7 @@ export const searchBarSlice = createSlice({
 
 export const { addCity } = searchBarSlice.actions;
 
-export const getCityList = (state) => state.cityList.value;
+export const getCityList = (state) => state.searchBar.cityList;
 
 export default searchBarSlice.reducer;
 
