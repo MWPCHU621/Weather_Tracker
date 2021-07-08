@@ -15,9 +15,16 @@ export const searchBarSlice = createSlice({
             .then(
                 (result) => {
                     console.log("GOOD", result);
+                    if(state.cityList.length >= 8) {
+                        state.cityList.pop();
+                    }
+
+                    state.cityList.push(result);
+
                 },
                 (error) => {
                     console.log("ERROR", error);
+                    alert("This is an invalid city. Please enter a valid city");
                 }
             )
        },
