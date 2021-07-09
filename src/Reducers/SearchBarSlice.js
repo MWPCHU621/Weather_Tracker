@@ -58,7 +58,7 @@ export const searchBarSlice = createSlice({
 
 export const { addCity, removeCity, removeAll, refreshCityData } = searchBarSlice.actions;
 
-export const getCityList = (state) => state.cityList.cityList;
+export const getCityList = (state) => state.cities.cityList;
 
 export default searchBarSlice.reducer;
 
