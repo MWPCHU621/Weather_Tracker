@@ -44,15 +44,15 @@ export function CitySearchBar() {
                 }
             )
 
-        // let data = getCityInfo(city);
-
-        // console.log(data);
+        // getCityInfo(city).then((data) => {
+        //     console.log(data);
+        //     // let cityData = {
+        //     //     name:data.name,
+        //     //     weather: data.weather[0].description,
+        //     //     temp: (Math.round(data.main.temp) + "C"),
+        //     // };
+        // })
         
-        // // let cityData = {
-        // //     name:data.name,
-        // //     weather: data.weather[0].description,
-        // //     temp: (Math.round(data.main.temp) + "C"),
-        // // };
 
     
 
