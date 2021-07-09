@@ -15,6 +15,7 @@ export function CityList() {
     return (
         <div>
             <div className="city_list_container">
+                <div>Recent Locations</div>
                 {
                     cityList.map((city, index) => {
                         return (
