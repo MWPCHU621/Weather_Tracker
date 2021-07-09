@@ -13,7 +13,7 @@ export function WeatherInfo() {
 
     return (
         <div className="weather_info_container">
-            <h2>{cityWeatherInfo.name}</h2>
+            {/* <h2>{cityWeatherInfo.name}</h2>
             <h1>Weather Icon</h1>
             <p>{cityWeatherInfo.temp}</p>
             <p>{cityWeatherInfo.weather}</p>
@@ -21,9 +21,24 @@ export function WeatherInfo() {
             <p>{cityWeatherInfo.pressure}</p>
 
             <div className="day1">
-                <div>{cityWeatherInfo.weekly[0]}</div>
+                <div>Daily Weather simple</div>
+            </div> */}
+            <div className="refresh">
+                <Button onClick={() => fetchWeatherData(cityWeatherInfo.name)}>Refresh</Button>
             </div>
-
         </div>
     );
+
+    function fetchWeatherData(city) {
+        fetch(`api.openweathermap.org/data/2.5/forecast/daily?q=${city}&cnt=5&appid=c51223c219d6aec8cb8c5210449bd859`)
+        .then(res => res.json())
+        .then(
+            (data) => {
+                console.log(data);
+                let weatherObject = {
+                    name: data.
+                }
+            }
+        )
+    }
 }
