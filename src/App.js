@@ -1,6 +1,5 @@
 import React from 'react';
 import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
 import { CitySearchBar } from './Components/SearchBar';
 import { CityList } from './Components/CityList';
 import './App.css';

@@ -16,7 +16,7 @@ export function CitySimpleData(props) {
 
     return(
         <div className="simpleCityData">
-            <Button onClick={props.getCityInfo}>{city.name} - {city.temperature} {city.weather}</Button>
+            <Button onClick={() => props.getCityDetailedInfo(city.name)}>{city.name} - {city.temperature} {city.weather}</Button>
             <Button onClick={() => props.refreshCity(city.name)}><RefreshIcon /></Button>
             <Button onClick={() => props.remove(city)}><ClearIcon /></Button>
         </div>

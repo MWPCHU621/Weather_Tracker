@@ -38,11 +38,11 @@ export function CitySearchBar() {
                     }
             
                     dispatch(addCity(cityData));
-                },
-                (error) => {
-                    console.log("INVALID CITY", error);
                 }
             )
+            .catch(error => {
+                alert("Invalid City. Please enter a valid city");
+            })
 
         // getCityInfo(city).then((data) => {
         //     console.log(data);

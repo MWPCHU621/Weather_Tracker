@@ -30,7 +30,7 @@ export const searchBarSlice = createSlice({
         },
 
         //refreshes the data for a given city by replacing the city object with a new city object of the same city.
-        refreshCity: (state, action) => {
+        refreshCityData: (state, action) => {
             let cityNameList = state.cityList.map(city => city.name);
             let index = cityNameList.indexOf(action.payload.name); //finds the index of the given city in the store array.
             state.cityList.splice(index, 1, action.payload);
@@ -56,7 +56,7 @@ export const searchBarSlice = createSlice({
     
 });
 
-export const { addCity, removeCity, removeAll } = searchBarSlice.actions;
+export const { addCity, removeCity, removeAll, refreshCityData } = searchBarSlice.actions;
 
 export const getCityList = (state) => state.cityList.cityList;
 

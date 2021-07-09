@@ -6,13 +6,12 @@ export function getCityInfo(cityName){
             (data) => {
                 return data;
             },
-
         )
 }
 
 //fetches 5 days worth of weather data for a given city name
 export function getCityInfoFiveDay(cityName) {
-    fetch(`api.openweathermap.org/data/2.5/forecast/daily?q=${cityName}&units=metric&cnt=5&appid=c51223c219d6aec8cb8c5210449bd859`)
+    fetch(`https://api.openweathermap.org/data/2.5/forecast/daily?q=${cityName}&units=metric&cnt=5&appid=c51223c219d6aec8cb8c5210449bd859`)
         .then(res => res.json())
         .then(
             (data) => {
