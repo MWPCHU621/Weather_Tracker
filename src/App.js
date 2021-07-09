@@ -10,7 +10,7 @@ function App() {
     <div className="App">
       <div className="Left_Container">
         <CitySearchBar />
-        {/* <CityList /> */}
+        <CityList />
       </div>
       <div className="Right_Container">
         

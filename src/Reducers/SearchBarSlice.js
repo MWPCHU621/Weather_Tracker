@@ -15,15 +15,20 @@ export const searchBarSlice = createSlice({
                 state.cityList.pop();
             }
 
-            state.cityList.push(action.payload);
+            state.cityList.splice(0,0,action.payload);
+        },
+
+        removeCity: (state, action) => {
+            console.log("REMOVE CITY DEBUG", state, action.payload.name);
+            state.cityList.filter(city => city.name != action.payload.name);
         }
    },
     
 });
 
-export const { addCity } = searchBarSlice.actions;
+export const { addCity, removeCity } = searchBarSlice.actions;
 
-export const getCityList = (state) => state.searchBar.cityList;
+export const getCityList = (state) => state.cityList.cityList;
 
 export default searchBarSlice.reducer;
 

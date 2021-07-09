@@ -16,11 +16,10 @@ export function CityList() {
         <div>
             <div className="city_list_container">
                 {
-                    cityList.map(city => {
+                    console.log("cityList", cityList),
+                    cityList.map((city, index) => {
                         return (
-                            
-                            // <Button >{city.name} {city.temperature} {city.weather}</Button>
-                            <CitySimpleData {...city}/>
+                            <CitySimpleData key={index} {...city}/>
                         )
                     })
                 }

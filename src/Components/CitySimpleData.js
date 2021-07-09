@@ -1,18 +1,27 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
+import { useDispatch } from 'react-redux';
 
 import { Button } from '@material-ui/core';
+import RefreshIcon from '@material-ui/icons/Refresh';
+import ClearIcon from '@material-ui/icons/Clear';
 
+import { removeCity } from '../Reducers/SearchBarSlice';
 import { getCityInfo, getCityInfoFiveDay } from '../Helper/ApiCalls';
 
 
 export function CitySimpleData(props) {
+    const dispatch = useDispatch();
     const [city, setCity] = useState(props);
+
+    useEffect(() => {
+        setCity(props);
+    }, [props]);
 
     return(
         <div className="simpleCityData">
-            <Button onClick={getCityInfo}>{city.name} - {city.temp} {city.weather}</Button>
-            <Button onClick={refreshCity}>Refresh</Button>
-            <Button onClick={removeCity}>Remove</Button>
+            <Button onClick={getCityInfo}>{city.name} - {city.temperature} {city.weather}</Button>
+            <Button onClick={refreshCity}><RefreshIcon /></Button>
+            <Button onClick={remove(city)}><ClearIcon /></Button>
         </div>
     )
 
@@ -42,8 +51,8 @@ export function CitySimpleData(props) {
         }
     }
 
-    function removeCity() {
-
+    function remove(city) {
+        dispatch(removeCity(city));
     }
 
 }
