@@ -6,7 +6,6 @@ import SearchBar from 'material-ui-search-bar';
 
 
 export function CitySearchBar() {
-    // const cityList = useSelector(getCityList);
     const dispatch = useDispatch();
 
     const [value, setValue] = useState("");
