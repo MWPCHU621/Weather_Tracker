@@ -1,6 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import {addCity} from '../Reducers/SearchBarSlice';
+import { getCityInfo } from '../Helper/ApiCalls';
 
 import SearchBar from 'material-ui-search-bar';
 
@@ -36,11 +37,26 @@ export function CitySearchBar() {
                     }
             
                     dispatch(addCity(cityData));
-                },
-                (error) => {
-                    console.log("INVALID CITY", error);
                 }
             )
+            .catch(error => {
+                alert("Invalid City. Please enter a valid city");
+            })
+
+        // getCityInfo(city).then((data) => {
+        //     console.log(data);
+        //     // let cityData = {
+        //     //     name:data.name,
+        //     //     weather: data.weather[0].description,
+        //     //     temp: (Math.round(data.main.temp) + "C"),
+        //     // };
+        // })
+        
+
+    
+
+
+        // dispatch(addCity(cityData));
     }
 
 }
