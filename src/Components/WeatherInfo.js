@@ -10,6 +10,7 @@ import { DailyInfo } from './DailyInfo';
 import { getWeatherDayInfo, weatherToIcon } from '../Helper/HelperFunctions';
 
 import { Button } from '@material-ui/core';
+import RefreshIcon from '@material-ui/icons/Refresh';
 
 
 export function WeatherInfo() {
@@ -40,7 +41,7 @@ export function WeatherInfo() {
                     }
                 </div>
                 <div className="refresh">
-                    <Button onClick={() => fetchWeatherData(cityWeatherInfo.name)}>Refresh</Button>
+                    <Button onClick={() => fetchWeatherData(cityWeatherInfo.name)}><RefreshIcon /></Button>
                 </div>
             </div>
         );
