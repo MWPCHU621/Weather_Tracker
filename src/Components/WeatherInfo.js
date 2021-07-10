@@ -7,7 +7,7 @@ import { Button } from '@material-ui/core';
 import RefreshIcon from '@material-ui/icons/Refresh';
 
 export function WeatherInfo() {
-    
+
     const dispatch = useDispatch();
     const cityWeatherInfo = useSelector(getWeatherInfo);
     const hasDetailedData = useSelector(getWeatherInfoBool);

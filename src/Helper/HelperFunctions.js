@@ -23,22 +23,22 @@ export function weatherToIcon(weather) {
     let icon;
     switch(weather) {
         case "Thunderstorm":
-            icon = <img src={thunder} />
+            icon = <img src={thunder} alt="thunder icon" />
             break;
         case "Drizzle":
-            icon = <img src={drizzle} />
+            icon = <img src={drizzle} alt ="drizzle icon"/>
             break;
         case "Rain":
-            icon  = <img src={rainy} />
+            icon  = <img src={rainy} alt="rainy icon"/>
             break;
         case "Snow":
-            icon = <img src={snow} />
+            icon = <img src={snow} alt="snowy icon"/>
             break;
         case "Clear":
-            icon = <img src={clear} />
+            icon = <img src={clear} alt="clear icon"/>
             break;
         case "Clouds":
-            icon = <img src={clouds} />
+            icon = <img src={clouds} alt="cloudy icon"/>
             break;
         default:
             break;
