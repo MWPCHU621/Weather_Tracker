@@ -7,7 +7,7 @@ import {
     getWeatherInfoBool 
 } from '../Reducers/WeatherInfoSlice';
 import { DailyInfo } from './DailyInfo';
-import { getWeatherDayInfo } from '../Helper/HelperFunctions';
+import { getWeatherDayInfo, weatherToIcon } from '../Helper/HelperFunctions';
 
 import { Button } from '@material-ui/core';
 
@@ -26,7 +26,7 @@ export function WeatherInfo() {
         return (
             <div className="weather_info_container">
                 <h2>{cityWeatherInfo.name}</h2>
-                <h1>Weather Icon</h1>
+                <h1>{weatherToIcon(cityWeatherInfo.currentWeather)}</h1>
                 <p>{cityWeatherInfo.currentTemp}</p>
                 <p>{cityWeatherInfo.currentWeather}</p>
                 <p>Wind: {cityWeatherInfo.wind}</p>

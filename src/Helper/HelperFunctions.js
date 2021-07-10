@@ -1,3 +1,12 @@
+import rainy from '../Icons/amcharts_weather_icons/animated/rainy-5.svg';
+import thunder from '../Icons/amcharts_weather_icons/animated/thunder.svg';
+import drizzle from '../Icons/amcharts_weather_icons/animated/rainy-1.svg';
+import snow from '../Icons/amcharts_weather_icons/animated/snowy-5.svg';
+import clear from '../Icons/amcharts_weather_icons/animated/day.svg';
+import clouds from '../Icons/amcharts_weather_icons/animated/cloudy-day-1.svg';
+
+
+
 //Helper function for getWeather Info
 export function getWeatherDayInfo(data) {
     let date = new Date(data.dt * 1000);
@@ -17,23 +26,22 @@ export function weatherToIcon(weather) {
     let icon;
     switch(weather) {
         case "Thunderstorm":
-            icon = <img src="../../public/amcharts_weather_icons/animate/thunder.svg" />
+            icon = <img src={thunder} />
             break;
         case "Drizzle":
-            icon = <img src="../../public/amcharts_weather_icons/animate/rainy-1.svg" />
+            icon = <img src={drizzle} />
             break;
         case "Rain":
-            console.log("DEBUG");
-            icon = <img src="../../../public/amcharts_weather_icons/animated/rainy-5.svg" />
+            icon  = <img src={rainy} />
             break;
         case "Snow":
-            icon = <img src="../../public/amcharts_weather_icons/animate/snowy-5.svg" />
+            icon = <img src={snow} />
             break;
         case "Clear":
-            icon = <img src="../../public/amcharts_weather_icons/animate/day.svg" />
+            icon = <img src={clear} />
             break;
         case "Clouds":
-            icon = <img src="../../public/amcharts_weather_icons/animate/cloudy-day-1.svg" />
+            icon = <img src={clouds} />
             break;
         default:
             break;
