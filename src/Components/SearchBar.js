@@ -17,7 +17,7 @@ export function CitySearchBar() {
                 <SearchBar
                     value={value}
                     onChange={(newValue) => setValue(newValue)}
-                    onRequestSearch={() => searchCity(value)} 
+                    onRequestSearch={() => { searchCity(value); setValue(""); }} 
                 />
                 <hr className="horizontal_line"></hr>
             </div>

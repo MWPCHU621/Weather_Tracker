@@ -46,28 +46,27 @@ export function WeatherInfo() {
         );
     }
 
-
+    //fetches new 5 day weather data and overwrites current 5 day weather data in the store.
     function fetchWeatherData(city) {
-        fetch(`https://api.openweathermap.org/data/2.5/forecast/daily?q=${city}&cnt=5&units=metric&appid=c51223c219d6aec8cb8c5210449bd859`)
-        .then(res => res.json())
-        .then(
-            (data) => {
-                let newData = {
-                    name: data.city.name,
-                    currentTemp: (Math.round(data.list[0].temp.day) + "C"),
-                    currentWeather: data.list[0].weather[0].main,
-                    wind: ( Math.round(data.list[0].speed) + "ms " + data.list[0].deg + " deg"),
-                    pressure: data.list[0].pressure,
-                    dayOne: getWeatherDayInfo(data.list[0]),
-                    dayTwo: getWeatherDayInfo(data.list[1]),
-                    dayThree: getWeatherDayInfo(data.list[2]),
-                    dayFour: getWeatherDayInfo(data.list[3]),
-                    dayFive: getWeatherDayInfo(data.list[4]),
-                }
-
-                dispatch(addWeatherInfo(newData));
-
+        getCityInfoFiveDay(city)
+        .then(data => {
+            //formatting incoming data for easy access and display to be stored in the store.
+            let newData = {
+                name: data.city.name,
+                currentTemp: (Math.round(data.list[0].temp.day) + "C"),
+                currentWeather: data.list[0].weather[0].main,
+                wind: ( Math.round(data.list[0].speed) + "ms " + data.list[0].deg + " deg"),
+                pressure: data.list[0].pressure,
+                dailyWeatherData: [],
             }
-        )
+
+            //loop to create and push modified daily info to newData to be added to store.
+            for(let i=0; i<5; i++) {
+                newData.dailyWeatherData.push(getWeatherDayInfo(data.list[i]));
+            }
+
+            dispatch(addWeatherInfo(newData));
+        
+        })
     }
 }
