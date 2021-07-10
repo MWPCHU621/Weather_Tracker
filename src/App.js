@@ -2,7 +2,6 @@ import React from 'react';
 import { CitySearchBar } from './Components/SearchBar';
 import { CityList } from './Components/CityList';
 import { WeatherInfo } from './Components/WeatherInfo';
-import './App.css';
 
 function App() {
   return (
