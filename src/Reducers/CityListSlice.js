@@ -4,8 +4,8 @@ const initialState= {
     cityList:[],
 };
 
+export const cityListSlice = createSlice({
 
-export const searchBarSlice = createSlice({
     name: 'searchBar',
     initialState,
 
@@ -51,15 +51,11 @@ export const searchBarSlice = createSlice({
         removeAll: (state) => {
             state.cityList = [];
         }
-
    },
-    
 });
 
-export const { addCity, removeCity, removeAll, refreshCityData } = searchBarSlice.actions;
+export const { addCity, removeCity, removeAll, refreshCityData } = cityListSlice.actions;
 
 export const getCityList = (state) => state.cities.cityList;
 
-export default searchBarSlice.reducer;
-
-
+export default cityListSlice.reducer;

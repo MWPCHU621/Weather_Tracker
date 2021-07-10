@@ -1,27 +1,21 @@
 import { useSelector, useDispatch } from 'react-redux';
-
 import { getCityInfoFiveDay } from '../Helper/ApiCalls';
-import { 
-    getWeatherInfo, 
-    addWeatherInfo, 
-    getWeatherInfoBool 
-} from '../Reducers/WeatherInfoSlice';
+import { getWeatherInfo, addWeatherInfo, getWeatherInfoBool } from '../Reducers/WeatherInfoSlice';
 import { DailyInfo } from './DailyInfo';
 import { getWeatherDayInfo, weatherToIcon } from '../Helper/HelperFunctions';
-
 import { Button } from '@material-ui/core';
 import RefreshIcon from '@material-ui/icons/Refresh';
 
-
 export function WeatherInfo() {
-    const dispatch = useDispatch();
     
+    const dispatch = useDispatch();
     const cityWeatherInfo = useSelector(getWeatherInfo);
     const hasDetailedData = useSelector(getWeatherInfoBool);
 
+    // conditional render for when there is detailed data and when there isn't detailed data to render.
     if(!hasDetailedData) {
         return(
-            <div className="empty_weather_info_container"></div>
+            <div className="weather_info_container"></div>
         )
     }else {
         return (
@@ -32,7 +26,6 @@ export function WeatherInfo() {
                 <p>{cityWeatherInfo.currentWeather}</p>
                 <p>Wind: {cityWeatherInfo.wind}</p>
                 <p>Pressure {cityWeatherInfo.pressure}</p>
-    
                 <div className="daily_weather_data">
                     {
                         cityWeatherInfo.dailyWeatherData.map((dailyData, index) => {

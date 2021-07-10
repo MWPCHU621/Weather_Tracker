@@ -1,15 +1,11 @@
 import { useSelector, useDispatch } from 'react-redux';
-
-import {getCityList, removeCity, removeAll, refreshCityData} from '../Reducers/SearchBarSlice';
-import { addWeatherInfo } from '../Reducers/WeatherInfoSlice';
+import {getCityList, removeAll } from '../Reducers/CityListSlice';
 import { CitySimpleData } from './CitySimpleData';
-
 import { Button } from '@material-ui/core';
 
-
 export function CityList() {
-    const dispatch = useDispatch();
 
+    const dispatch = useDispatch();
     const cityList = useSelector(getCityList);
 
     return (
@@ -27,8 +23,6 @@ export function CityList() {
             </div>
         </div>
     );
-
-    
 
     //removes all cities from the list
     function removeAllCities() {

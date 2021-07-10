@@ -1,20 +1,14 @@
-import {useEffect, useState} from 'react';
 import { useDispatch } from 'react-redux';
-
-
 import { addWeatherInfo } from '../Reducers/WeatherInfoSlice';
 import { getCityInfo, getCityInfoFiveDay } from '../Helper/ApiCalls';
 import { getWeatherDayInfo } from '../Helper/HelperFunctions';
-import { removeCity, refreshCityData} from '../Reducers/SearchBarSlice';
-
+import { removeCity, refreshCityData} from '../Reducers/CityListSlice';
 import { Button } from '@material-ui/core';
 import RefreshIcon from '@material-ui/icons/Refresh';
 import ClearIcon from '@material-ui/icons/Clear';
 
-
-
-
 export function CitySimpleData(props) {
+
     const dispatch = useDispatch();
     const city = props;
 
@@ -25,7 +19,6 @@ export function CitySimpleData(props) {
             <Button onClick={() => remove(city)}><ClearIcon /></Button>
         </div>
     )
-
 
     //gets 5 days worth of weather info for given city
     function getCityDetailedInfo(city) {
@@ -44,7 +37,6 @@ export function CitySimpleData(props) {
             for(let i=0; i<5; i++) {
                 newData.dailyWeatherData.push(getWeatherDayInfo(data.list[i]));
             }
-
             dispatch(addWeatherInfo(newData));
         })
     }
@@ -59,16 +51,12 @@ export function CitySimpleData(props) {
                 weather: data.weather[0].description,
                 temperature: (Math.round(data.main.temp) + "C"),
             }
-
             dispatch(refreshCityData(cityData));
         })
-
     }
 
     //removes a single given city from the list 
     function remove(city) {
         dispatch(removeCity(city));
     }
-    
-
 }

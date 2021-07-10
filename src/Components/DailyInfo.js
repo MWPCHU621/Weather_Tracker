@@ -1,11 +1,8 @@
-import { useSelector } from 'react-redux';
 import {useEffect, useState} from 'react';
 import { weatherToIcon } from '../Helper/HelperFunctions';
 
-
-
-
 export function DailyInfo(props) {
+
     const [dailyInfo, setDailyInfo] = useState(props);
 
     useEffect(() => {
@@ -25,5 +22,4 @@ export function DailyInfo(props) {
             <div>{props.dailyInfo.temp}</div>
         </div>
     )
-
 }
