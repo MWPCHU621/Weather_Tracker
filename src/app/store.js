@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import cityListReducer from '../Reducers/SearchBarSlice';
+import WeatherInfoReducer from '../Reducers/WeatherInfoSlice';
 
 export const store = configureStore({
   reducer: {
     cities: cityListReducer,
-    weatherInfo: {},
+    weatherInfo: WeatherInfoReducer,
+    hasDetailedData:WeatherInfoReducer,
   },
 });

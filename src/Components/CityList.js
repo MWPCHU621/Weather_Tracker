@@ -1,8 +1,10 @@
 import { useSelector, useDispatch } from 'react-redux';
 
 import {getCityList, removeCity, removeAll, refreshCityData} from '../Reducers/SearchBarSlice';
+import { addWeatherInfo } from '../Reducers/WeatherInfoSlice';
 import { CitySimpleData } from './CitySimpleData';
 import { getCityInfo, getCityInfoFiveDay } from '../Helper/ApiCalls';
+import { getWeatherDayInfo } from '../Helper/HelperFunctions';
 
 import { Button } from '@material-ui/core';
 
@@ -40,15 +42,17 @@ export function CityList() {
                     currentWeather: data.list[0].weather[0].main,
                     wind: ( Math.round(data.list[0].speed) + "ms " + data.list[0].deg + " deg"),
                     pressure: data.list[0].pressure,
-                    dayOne: getWeatherDayInfo(data.list[0]),
-                    dayTwo: getWeatherDayInfo(data.list[1]),
-                    dayThree: getWeatherDayInfo(data.list[2]),
-                    dayFour: getWeatherDayInfo(data.list[3]),
-                    dayFive: getWeatherDayInfo(data.list[4]),
+                    dailyWeatherData: [],
                 }
 
+                //loop to create and push modified daily info to newData to be added to store.
+                for(let i=0; i<5; i++) {
+                    newData.dailyWeatherData.push(getWeatherDayInfo(data.list[i]));
+                }
+
+                dispatch(addWeatherInfo(newData));
+
             }
-            //need to use dispatch to add info to new object in store.
         )
     }
 
@@ -81,20 +85,6 @@ export function CityList() {
         dispatch(removeAll());
     }
 
-    //Helper function for getWeather Info
-    function getWeatherDayInfo(data) {
-        let date = new Date(data.dt * 1000);
-        let dayString = date.toUTCString();
 
-
-        let dayInfo = {
-            dayOfWeek: dayString.slice(0,3),
-            date: dayString.slice(5,7),
-            weather: data.weather.main,
-            temp: (Math.round(data.temp.day) + "C")
-        }
-
-        return dayInfo;
-    }
 
 }

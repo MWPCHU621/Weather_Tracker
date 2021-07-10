@@ -44,7 +44,6 @@ export function CitySearchBar() {
             })
 
         // getCityInfo(city).then((data) => {
-        //     console.log(data);
         //     // let cityData = {
         //     //     name:data.name,
         //     //     weather: data.weather[0].description,
