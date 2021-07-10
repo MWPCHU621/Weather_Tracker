@@ -17,7 +17,7 @@ export function WeatherInfo() {
         return(
             <div className="weather_info_container"></div>
         )
-    }else {
+    } else {
         return (
             <div className="weather_info_container">
                 <h2>{cityWeatherInfo.name}</h2>
@@ -58,9 +58,7 @@ export function WeatherInfo() {
             for(let i=0; i<5; i++) {
                 newData.dailyWeatherData.push(getWeatherDayInfo(data.list[i]));
             }
-
             dispatch(addWeatherInfo(newData));
-        
         })
     }
 }

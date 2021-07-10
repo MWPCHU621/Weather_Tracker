@@ -5,7 +5,7 @@ import snow from '../Icons/amcharts_weather_icons/animated/snowy-5.svg';
 import clear from '../Icons/amcharts_weather_icons/animated/day.svg';
 import clouds from '../Icons/amcharts_weather_icons/animated/cloudy-day-1.svg';
 
-//Helper function for getWeather Info
+//creates data structure for a single day which includes date, day of week, temp, and weather.
 export function getWeatherDayInfo(data) {
     let date = new Date(data.dt * 1000);
     let dayString = date.toUTCString();
@@ -19,6 +19,7 @@ export function getWeatherDayInfo(data) {
     return dayInfo;
 }
 
+// displays an icon corresponding to the weather passed in as the argument.
 export function weatherToIcon(weather) {
     let icon;
     switch(weather) {
@@ -41,6 +42,7 @@ export function weatherToIcon(weather) {
             icon = <img src={clouds} alt="cloudy icon"/>
             break;
         default:
+            //don't need to do anything since there is no default icon to display
             break;
     }
     return icon;
