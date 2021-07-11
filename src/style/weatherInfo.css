@@ -13,3 +13,12 @@
 .refresh {
     float:right;
 }
+
+h1 {
+    padding-left: 35px;
+}
+
+p {
+    font-size:x-large;
+    font-family: 'Times New Roman', Times, serif;
+}

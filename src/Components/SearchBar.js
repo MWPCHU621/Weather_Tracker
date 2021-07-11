@@ -27,7 +27,7 @@ export function CitySearchBar() {
         getCityInfo(city).then((data) => {
             let cityData = {
                 name: data.name,
-                weather: data.weather[0].description,
+                weather: data.weather[0].main,
                 temperature: (Math.round(data.main.temp) + "C"),
             }
             dispatch(addCity(cityData));

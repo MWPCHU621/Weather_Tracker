@@ -26,7 +26,7 @@ export function WeatherInfo() {
                 <div className="refresh">
                     <Button onClick={() => fetchWeatherData(cityWeatherInfo.name)}><RefreshIcon /></Button>
                 </div>
-                <h2>{cityWeatherInfo.name}</h2>
+                <h1>{cityWeatherInfo.name}</h1>
                 <div className="detailed_city_icon">{weatherToIcon(cityWeatherInfo.currentWeather)}</div>
                 <div className="detailed_city_info">
                     <p>{cityWeatherInfo.currentTemp}</p>

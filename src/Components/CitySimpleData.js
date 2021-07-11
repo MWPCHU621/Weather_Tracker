@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { addWeatherInfo } from '../Reducers/WeatherInfoSlice';
 import { getCityInfo, getCityInfoFiveDay } from '../Helper/ApiCalls';
-import { getWeatherDayInfo } from '../Helper/HelperFunctions';
+import { getWeatherDayInfo, weatherToIcon } from '../Helper/HelperFunctions';
 import { removeCity, refreshCityData} from '../Reducers/CityListSlice';
 import { Button } from '@material-ui/core';
 import RefreshIcon from '@material-ui/icons/Refresh';
@@ -21,7 +21,7 @@ export function CitySimpleData(props) {
                 style={{justifyContent:"flex-start", backgroundColor:"transparent"}}
                 disableRipple
             > 
-                {city.name} - {city.temperature} {city.weather} 
+                {city.name} - {city.temperature} {weatherToIcon(city.weather)} 
             </Button>
             <Button className="city_refresh" onClick={() => refreshCity(city.name)}><RefreshIcon /></Button>
             <Button className="city_remove" onClick={() => remove(city)}><ClearIcon /></Button>
