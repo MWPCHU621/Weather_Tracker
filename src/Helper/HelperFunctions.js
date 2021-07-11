@@ -42,7 +42,8 @@ export function weatherToIcon(weather) {
             icon = <img src={clouds} height="100%" alt="cloudy icon"/>
             break;
         default:
-            //don't need to do anything since there is no default icon to display
+            //display the weather condition for specific conditions that don't have available svg icons.
+            icon = weather;
             break;
     }
     return icon;

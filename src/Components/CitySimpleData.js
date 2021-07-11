@@ -36,6 +36,7 @@ export function CitySimpleData(props) {
                 name: data.city.name,
                 currentTemp: (Math.round(data.list[0].temp.day) + "C"),
                 currentWeather: data.list[0].weather[0].main,
+                description: data.list[0].weather[0].description,
                 wind: ( Math.round(data.list[0].speed) + "ms " + data.list[0].deg + " deg"),
                 pressure: data.list[0].pressure,
                 dailyWeatherData: [],

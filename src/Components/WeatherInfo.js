@@ -30,7 +30,7 @@ export function WeatherInfo() {
                 <div className="detailed_city_icon">{weatherToIcon(cityWeatherInfo.currentWeather)}</div>
                 <div className="detailed_city_info">
                     <p>{cityWeatherInfo.currentTemp}</p>
-                    <p>{cityWeatherInfo.currentWeather}</p>
+                    <p>{cityWeatherInfo.description}</p>
                     <p>Wind: {cityWeatherInfo.wind}</p>
                     <p>Pressure {cityWeatherInfo.pressure}</p>
                 </div>
@@ -55,6 +55,7 @@ export function WeatherInfo() {
                 name: data.city.name,
                 currentTemp: (Math.round(data.list[0].temp.day) + "C"),
                 currentWeather: data.list[0].weather[0].main,
+                description: data.list[0].weather[0].description,
                 wind: ( Math.round(data.list[0].speed) + "ms " + data.list[0].deg + " deg"),
                 pressure: data.list[0].pressure,
                 dailyWeatherData: [],
