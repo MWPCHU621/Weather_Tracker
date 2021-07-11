@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import {getCityList, removeAll } from '../Reducers/CityListSlice';
 import { CitySimpleData } from './CitySimpleData';
 import { Button } from '@material-ui/core';
+import '../style/cityList.css';
 
 export function CityList() {
 
@@ -9,18 +10,18 @@ export function CityList() {
     const cityList = useSelector(getCityList);
 
     return (
-        <div>
-            <div className="city_list_container">
-                <div>Recent Locations</div>
+        <div className="city_list_container">
+            <p className="container_title">Recent Locations</p>
+            <div className="city_container">
                 {
                     cityList.map((city, index) => {
                         return (
-                            <CitySimpleData key={index} {...city}/>
+                            <CitySimpleData key={index} {...city} />
                         )
                     })
                 }
-                <Button onClick={removeAllCities}>Clear</Button>
             </div>
+            <Button onClick={removeAllCities} className="clear_city_btn">Clear</Button>
         </div>
     );
 

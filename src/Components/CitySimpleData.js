@@ -6,6 +6,7 @@ import { removeCity, refreshCityData} from '../Reducers/CityListSlice';
 import { Button } from '@material-ui/core';
 import RefreshIcon from '@material-ui/icons/Refresh';
 import ClearIcon from '@material-ui/icons/Clear';
+import '../style/citySimpleData.css';
 
 export function CitySimpleData(props) {
 
@@ -13,10 +14,17 @@ export function CitySimpleData(props) {
     const city = props;
 
     return(
-        <div className="simpleCityData">
-            <Button onClick={() => getCityDetailedInfo(city.name)}>{city.name} - {city.temperature} {city.weather}</Button>
-            <Button onClick={() => refreshCity(city.name)}><RefreshIcon /></Button>
-            <Button onClick={() => remove(city)}><ClearIcon /></Button>
+        <div className="simple_city_data">
+            <Button 
+                className="city_text" 
+                onClick={() => getCityDetailedInfo(city.name)}
+                style={{justifyContent:"flex-start", backgroundColor:"transparent"}}
+                disableRipple
+            > 
+                {city.name} - {city.temperature} {city.weather} 
+            </Button>
+            <Button className="city_refresh" onClick={() => refreshCity(city.name)}><RefreshIcon /></Button>
+            <Button className="city_remove" onClick={() => remove(city)}><ClearIcon /></Button>
         </div>
     )
 

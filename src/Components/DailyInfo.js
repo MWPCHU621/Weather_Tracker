@@ -1,4 +1,5 @@
 import { weatherToIcon } from '../Helper/HelperFunctions';
+import '../style/dailyInfo.css';
 
 export function DailyInfo(props) {
 

@@ -3,8 +3,11 @@ import { getCityInfoFiveDay } from '../Helper/ApiCalls';
 import { getWeatherInfo, addWeatherInfo, getWeatherInfoBool } from '../Reducers/WeatherInfoSlice';
 import { DailyInfo } from './DailyInfo';
 import { getWeatherDayInfo, weatherToIcon } from '../Helper/HelperFunctions';
-import { Button } from '@material-ui/core';
+import { Button, SvgIcon } from '@material-ui/core';
 import RefreshIcon from '@material-ui/icons/Refresh';
+import '../style/weatherInfo.css';
+
+import clouds from '../Icons/amcharts_weather_icons/animated/cloudy-day-1.svg';
 
 export function WeatherInfo() {
 
@@ -20,12 +23,17 @@ export function WeatherInfo() {
     } else {
         return (
             <div className="weather_info_container">
+                <div className="refresh">
+                    <Button onClick={() => fetchWeatherData(cityWeatherInfo.name)}><RefreshIcon /></Button>
+                </div>
                 <h2>{cityWeatherInfo.name}</h2>
-                <h1>{weatherToIcon(cityWeatherInfo.currentWeather)}</h1>
-                <p>{cityWeatherInfo.currentTemp}</p>
-                <p>{cityWeatherInfo.currentWeather}</p>
-                <p>Wind: {cityWeatherInfo.wind}</p>
-                <p>Pressure {cityWeatherInfo.pressure}</p>
+                <div className="detailed_city_icon">{weatherToIcon(cityWeatherInfo.currentWeather)}</div>
+                <div className="detailed_city_info">
+                    <p>{cityWeatherInfo.currentTemp}</p>
+                    <p>{cityWeatherInfo.currentWeather}</p>
+                    <p>Wind: {cityWeatherInfo.wind}</p>
+                    <p>Pressure {cityWeatherInfo.pressure}</p>
+                </div>
                 <div className="daily_weather_data">
                     {
                         cityWeatherInfo.dailyWeatherData.map((dailyData, index) => {
@@ -33,9 +41,7 @@ export function WeatherInfo() {
                         })
                     }
                 </div>
-                <div className="refresh">
-                    <Button onClick={() => fetchWeatherData(cityWeatherInfo.name)}><RefreshIcon /></Button>
-                </div>
+                
             </div>
         );
     }

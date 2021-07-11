@@ -1,0 +1,15 @@
+.daily_weather_data {
+    display:flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    clear:left;
+}
+
+.detailed_city_icon {
+    float:left;
+    height: 200px;
+}
+
+.refresh {
+    float:right;
+}
