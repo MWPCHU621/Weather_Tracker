@@ -8,7 +8,7 @@ export function CityList() {
 
     const dispatch = useDispatch();
     const cityList = useSelector(getCityList);
-    console.log(cityList);
+
     return (
         <div className="city_list_container">
             <p className="container_title">Recent Locations</p>
