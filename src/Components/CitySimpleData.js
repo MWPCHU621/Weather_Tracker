@@ -23,7 +23,7 @@ export function CitySimpleData(props) {
             > 
                 {city.name} - {city.temperature} {weatherToIcon(city.weather)} 
             </Button>
-            <Button className="city_refresh" onClick={() => refreshCity(city.name)}><RefreshIcon /></Button>
+            <Button className="city_refresh" size="small" onClick={() => refreshCity(city.name)}><RefreshIcon /></Button>
             <Button className="city_remove" onClick={() => remove(city)}><ClearIcon /></Button>
         </div>
     )

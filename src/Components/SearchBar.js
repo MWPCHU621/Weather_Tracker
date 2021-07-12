@@ -12,16 +12,15 @@ export function CitySearchBar() {
     const [error, setError] = useState(false);
 
     return (
-        <div>
-            <div className="searchBar_container">
-                <SearchBar
-                    value={value}
-                    onChange={(newValue) => setValue(newValue)}
-                    onRequestSearch={() => { searchCity(value); setValue(""); }} 
-                    placeholder="Type City Name"
-                />
-                <p className={error ? 'show_error' : 'hide_error'}>Invalid city. Please enter a valid city</p>
-            </div>
+        <div className="searchBar_container">
+            <SearchBar
+                value={value}
+                onChange={(newValue) => setValue(newValue)}
+                onRequestSearch={() => { searchCity(value); setValue(""); }} 
+                placeholder="Type City Name"
+                style={{boxShadow:"none"}}
+            />
+            <p className={error ? 'show_error' : 'hide_error'}>Invalid city. Please enter a valid city</p>
         </div>
     );
 

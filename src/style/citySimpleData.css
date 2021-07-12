@@ -1,12 +1,11 @@
 .simple_city_data {
     display:flex;
     border-bottom: 1px solid lightgray;
-    height:10%;
-
 }
 
 .city_text {
     flex:90%;
+    text-transform:none !important;
 }
 
 .city_text :hover {

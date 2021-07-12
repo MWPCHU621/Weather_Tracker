@@ -26,13 +26,15 @@ export function WeatherInfo() {
                 <div className="refresh">
                     <Button onClick={() => fetchWeatherData(cityWeatherInfo.name)}><RefreshIcon /></Button>
                 </div>
-                <h1>{cityWeatherInfo.name}</h1>
-                <div className="detailed_city_icon">{weatherToIcon(cityWeatherInfo.currentWeather)}</div>
-                <div className="detailed_city_info">
-                    <p>{cityWeatherInfo.currentTemp}</p>
-                    <p>{cityWeatherInfo.description}</p>
-                    <p>Wind: {cityWeatherInfo.wind}</p>
-                    <p>Pressure {cityWeatherInfo.pressure}</p>
+                <h1 className="city_name">{cityWeatherInfo.name}</h1>
+                <div className="detailed_city">
+                    <div className="detailed_city_icon">{weatherToIcon(cityWeatherInfo.currentWeather)}</div>
+                    <div className="detailed_city_info">
+                        <p>{cityWeatherInfo.currentTemp}</p>
+                        <p>{cityWeatherInfo.description[0].toUpperCase() + cityWeatherInfo.description.substring(1)}</p>
+                        <p>Wind: {cityWeatherInfo.wind}</p>
+                        <p>Pressure {cityWeatherInfo.pressure}</p>
+                    </div>
                 </div>
                 <div className="daily_weather_data">
                     {

@@ -3,6 +3,11 @@
     flex-direction: row;
     justify-content: flex-start;
     clear:left;
+    margin-left:38px;
+}
+
+.detailed_city {
+    margin-bottom:3em;
 }
 
 .detailed_city_icon {
@@ -14,8 +19,8 @@
     float:right;
 }
 
-h1 {
-    padding-left: 35px;
+.city_name {
+    padding-left: 1.5em;
 }
 
 p {

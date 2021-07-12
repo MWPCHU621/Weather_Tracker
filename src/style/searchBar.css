@@ -1,5 +1,6 @@
 .searchBar_container {
     border-bottom: 2px solid black;
+    margin:10px;
 }
 
 .hide_error {
