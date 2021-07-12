@@ -3,7 +3,7 @@ import { getCityInfoFiveDay } from '../Helper/ApiCalls';
 import { getWeatherInfo, addWeatherInfo, getWeatherInfoBool } from '../Reducers/WeatherInfoSlice';
 import { DailyInfo } from './DailyInfo';
 import { getWeatherDayInfo, weatherToIcon } from '../Helper/HelperFunctions';
-import { Button, SvgIcon } from '@material-ui/core';
+import { Button } from '@material-ui/core';
 import RefreshIcon from '@material-ui/icons/Refresh';
 import '../style/weatherInfo.css';
 
@@ -24,7 +24,7 @@ export function WeatherInfo() {
         return (
             <div className="weather_info_container">
                 <div className="refresh">
-                    <Button onClick={() => fetchWeatherData(cityWeatherInfo.name)}><RefreshIcon /></Button>
+                    <Button size="large" onClick={() => fetchWeatherData(cityWeatherInfo.name)}><RefreshIcon /></Button>
                 </div>
                 <h1 className="city_name">{cityWeatherInfo.name}</h1>
                 <div className="detailed_city">

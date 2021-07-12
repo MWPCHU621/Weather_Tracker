@@ -18,7 +18,7 @@ export function CitySimpleData(props) {
             <Button 
                 className="city_text" 
                 onClick={() => getCityDetailedInfo(city.name)}
-                style={{justifyContent:"flex-start", backgroundColor:"transparent"}}
+                style={{justifyContent:"flex-start", backgroundColor:"transparent", fontSize:"large"}}
                 disableRipple
             > 
                 {city.name} - {city.temperature} {weatherToIcon(city.weather)} 
