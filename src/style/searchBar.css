@@ -7,7 +7,7 @@
 }
 
 .show_error {
-    margin: 0;
+    margin: 5px 0 5px 0;
     font-size:medium;
     text-align: center;
     color:red;
