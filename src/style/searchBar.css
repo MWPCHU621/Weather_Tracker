@@ -1,0 +1,14 @@
+.searchBar_container {
+    border-bottom: 2px solid black;
+}
+
+.hide_error {
+    display:none;
+}
+
+.show_error {
+    margin: 0;
+    font-size:medium;
+    text-align: center;
+    color:red;
+}
