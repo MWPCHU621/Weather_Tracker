@@ -10,6 +10,12 @@
     border-bottom: 1px solid grey;
     padding-bottom:5px;
     padding-left: 10px;
+    margin: 10px 0 0 0;
+    height:2%;
+}
+
+.city_container {
+    height:98%;
 }
 
 .clear_city_btn {
