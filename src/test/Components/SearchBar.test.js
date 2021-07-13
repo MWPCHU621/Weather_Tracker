@@ -4,8 +4,7 @@ import userEvent, { keyboard } from '@testing-library/user-event';
 import React from 'react';
 import { Provider, connect } from 'react-redux';
 import { createStore } from 'redux';
-import { store } from '../../app/store';
-import { CitySearchBar, searchCity } from '../../Components/SearchBar';
+import { CitySearchBar } from '../../Components/SearchBar';
 import citylistReducer from '../../Reducers/CityListSlice';
 
 describe("Search Bar Component Test Suite", () => {
@@ -13,7 +12,7 @@ describe("Search Bar Component Test Suite", () => {
     const SearchBar = connect((state) => ({cityList: state.cityList}))(CitySearchBar);
 
     const initialReducerState = {
-        citylist: [],
+        cityList: [],
     }
 
     const reducer = citylistReducer;

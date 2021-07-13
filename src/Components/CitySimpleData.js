@@ -57,7 +57,7 @@ export function CitySimpleData(props) {
             // creating new object to be stored in city List for display in left container.
             let cityData = {
                 name: data.name,
-                weather: data.weather[0].description,
+                weather: data.weather[0].main,
                 temperature: (Math.round(data.main.temp) + "C"),
             }
             dispatch(refreshCityData(cityData));
