@@ -7,8 +7,6 @@ import { Button } from '@material-ui/core';
 import RefreshIcon from '@material-ui/icons/Refresh';
 import '../style/weatherInfo.css';
 
-import clouds from '../Icons/amcharts_weather_icons/animated/cloudy-day-1.svg';
-
 export function WeatherInfo() {
 
     const dispatch = useDispatch();
