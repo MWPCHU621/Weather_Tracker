@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-import {getCityList, removeAll } from '../Reducers/CityListSlice';
+import { getCityList, removeAll } from '../Reducers/CityListSlice';
 import { CitySimpleData } from './CitySimpleData';
 import { Button } from '@material-ui/core';
 import '../style/cityList.css';
