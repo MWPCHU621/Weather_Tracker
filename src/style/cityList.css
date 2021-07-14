@@ -27,5 +27,9 @@
     position:absolute !important;
     bottom:0;
     right:0;
-    width: 10em;
+    width: 40%;
+}
+
+@media only screen and (maxwidth: 1024px) {
+
 }

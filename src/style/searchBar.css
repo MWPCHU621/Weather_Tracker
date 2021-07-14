@@ -3,6 +3,36 @@
     margin:10px;
 }
 
+.add_city_form {
+    display:flex;
+    justify-content: flex-end;
+}
+
+.add_city_textarea {
+    border:none;
+    flex:0 0 0;
+    border-bottom: 1px solid lightgrey;
+    padding:0px 0 5px 0;
+    margin: 5px 0 10px 0;
+
+}
+
+.add_city_textarea:focus {
+    outline-style: none;
+    box-shadow: none;   
+    border-color: transparent;
+    border-bottom: 1px solid lightgrey;
+}
+
+.add_city_btn {
+    border:none;
+    background-color: white;
+}
+
+.add_city_btn:hover {
+    cursor:pointer;
+}
+
 .hide_error {
     display:none;
 }
