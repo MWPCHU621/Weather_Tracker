@@ -3,6 +3,7 @@ import { useState } from 'react';
 import {addCity} from '../Reducers/CityListSlice';
 import { getCityInfo } from '../Helper/ApiCalls';
 import AddIcon from '@material-ui/icons/Add';
+import { TextField } from '@material-ui/core';
 import '../style/searchBar.css';
 
 export function CitySearchBar() {
@@ -15,7 +16,8 @@ export function CitySearchBar() {
     return (
         <div className="searchBar_container">
             <form onSubmit={handleSubmit} className="add_city_form">
-                <input type="text" className="add_city_textarea" size="28" value={cityName} onChange={handleChange} placeholder="Type City Name"/>
+                {/* <input type="text" className="add_city_textarea" value={cityName} onChange={handleChange} placeholder="Type City Name"/> */}
+                <TextField className="add_city_textarea" placeholder="Type City Name" value={cityName} onChange={handleChange}/>
                 <button type="submit" className="add_city_btn"><AddIcon /></button>
             </form>
 
