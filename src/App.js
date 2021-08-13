@@ -4,18 +4,27 @@ import { CityList } from './Components/CityList';
 import { WeatherInfo } from './Components/WeatherInfo';
 import './style/app.css'
 
+// function App() {
+//   return (
+//     <div className="App" >
+//         <div className="left_container">
+//           <CitySearchBar />
+//           <CityList />
+//         </div>
+//       <div className="right_container">
+//         <WeatherInfo />
+//       </div>
+//     </div>
+//   );
+// }
+
 function App() {
-  return (
-    <div className="App" >
-        <div className="left_container">
-          <CitySearchBar />
-          <CityList />
-        </div>
-      <div className="right_container">
-        <WeatherInfo />
-      </div>
+  return(
+    <div className="App">
+      <CitySearchBar />
+      <WeatherInfo />
     </div>
-  );
+  )
 }
 
 export default App;
