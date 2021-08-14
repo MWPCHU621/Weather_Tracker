@@ -1,6 +1,6 @@
 import React from 'react';
-import { CitySearchBar } from './Components/SearchBar';
-import { WeatherInfo } from './Components/WeatherInfo';
+import { CitySearchBar } from './Components/SearchBar.tsx';
+import { WeatherInfo } from './Components/WeatherInfo.tsx';
 import './style/app.css'
 
 function App() {

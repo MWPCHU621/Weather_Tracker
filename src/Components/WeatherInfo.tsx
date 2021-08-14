@@ -1,11 +1,10 @@
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { getWeatherInfo, getWeatherInfoBool } from '../Reducers/WeatherInfoSlice';
 import { DailyInfo } from './DailyInfo';
 import '../style/weatherInfo.css';
 
-export function WeatherInfo() {
+export function WeatherInfo(): JSX.Element {
 
-    const dispatch = useDispatch();
     const cityWeatherInfo = useSelector(getWeatherInfo);
     const hasDetailedData = useSelector(getWeatherInfoBool);
 
@@ -30,7 +29,7 @@ export function WeatherInfo() {
                 </div>
                 <div className="daily_weather_data">
                     {
-                        cityWeatherInfo.dailyInfo.map((dailyData, index) => {
+                        cityWeatherInfo.dailyInfo.map((dailyData: object, index: number) => {
                             return (<DailyInfo key={index} dailyInfo={dailyData}/>)
                         })
                     }

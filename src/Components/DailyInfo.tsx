@@ -1,7 +1,7 @@
 import { weatherToIcon } from '../Helper/HelperFunctions';
 import '../style/dailyInfo.css';
 
-export function DailyInfo(props) {
+export function DailyInfo(props: any): JSX.Element {
 
     const dailyInfo = props.dailyInfo;
     

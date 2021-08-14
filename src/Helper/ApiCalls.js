@@ -11,7 +11,7 @@ export function convertZipcodeToCoord(zipcode, country) {
 }
 
 //fetches 7 days worth of weather data for a given city name
-export function getCityInfoSevenDay(lat,long) {
+export function getCityInfoSevenDay(lat, long) {
     return fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&exclude=minutely,hourly,alerts&units=metric&appid=c5bc463716cbbe021b14ac41ed34c9de`)
         .then(res => res.json())
 }

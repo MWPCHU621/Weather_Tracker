@@ -6,7 +6,7 @@ import clear from '../Icons/amcharts_weather_icons/animated/day.svg';
 import clouds from '../Icons/amcharts_weather_icons/animated/cloudy-day-1.svg';
 
 //creates data structure for a single day which includes date, day of week, temp, and weather.
-export function getWeatherDayInfo(data) {
+export function getWeatherDayInfo(data: any): object {
     let date = new Date(data.dt * 1000);
     let dayString = date.toUTCString();
 
@@ -20,7 +20,7 @@ export function getWeatherDayInfo(data) {
 }
 
 // displays an icon corresponding to the weather passed in as the argument.
-export function weatherToIcon(weather) {
+export function weatherToIcon(weather: string): JSX.Element {
     let icon;
     switch(weather) {
         case "Thunderstorm":
@@ -43,7 +43,7 @@ export function weatherToIcon(weather) {
             break;
         default:
             //display the weather condition for specific conditions that don't have available svg icons.
-            icon = weather;
+            icon = <p>{weather}</p>;
             break;
     }
     return icon;

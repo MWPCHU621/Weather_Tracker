@@ -7,7 +7,7 @@ import '../style/searchBar.css';
 import { addWeatherInfo } from '../Reducers/WeatherInfoSlice';
 import { getWeatherDayInfo } from '../Helper/HelperFunctions';
 
-export function CitySearchBar() {
+export function CitySearchBar(): JSX.Element {
 
     const dispatch = useDispatch();
     const [cityName, setCityName] = useState("");
@@ -36,25 +36,25 @@ export function CitySearchBar() {
         </div>
     );
 
-    function handleCityChange(e) {
+    function handleCityChange(e: any) {
         setCityName(e.target.value);
     }
 
-    function handleZipcodeChange(e) {
+    function handleZipcodeChange(e: any) {
         setZipcode(e.target.value);
     }
 
-    function handleCitySubmit(e) {
+    function handleCitySubmit(e: any) {
         e.preventDefault();
         searchCity(cityName);
     }
 
-    function handleZipcodeSubmit(e) {
+    function handleZipcodeSubmit(e: any) {
         e.preventDefault();
         searchZipCode(zipCountry);
     }
     
-    function searchCity (city) {
+    function searchCity (city: string) {
         convertCityToCoord(city).then((data) => {
             const lat = data[0].lat.toFixed(2);
             const lon = data[0].lon.toFixed(2);
@@ -67,7 +67,7 @@ export function CitySearchBar() {
         })
         .then(coord => {
             getCityInfoSevenDay(coord.lat, coord.lon).then((data) => {
-                let weatherInfo = {
+                let weatherInfo: any = {
                     description: data.current.weather[0].description,
                     currentTemp: data.current.feels_like + "C",
                     minTemp: data.daily[0].temp.min + "C",
@@ -75,7 +75,7 @@ export function CitySearchBar() {
                     windSpd: data.current.wind_speed,
                     precipitation: (data.daily[0].rain == undefined) ? 0 : data.daily[0].rain,
                     humidity:data.current.humidity,
-                    dailyInfo:[],
+                    dailyInfo: [],
                 }
                 
                 for(let i=1; i<8; i++) {
@@ -92,11 +92,11 @@ export function CitySearchBar() {
 
     }
 
-    function searchZipCode(zipCountry) {
+    function searchZipCode(zipCountry: string) {
         const strSplit = zipCountry.split(",");
         const zipcode = strSplit[0];
         const countryCode = strSplit[1];
-        console.log(zipcode, countryCode);
+
         convertZipcodeToCoord(zipcode, countryCode).then(data => {
             const lat = data.lat.toFixed(2);
             const lon = data.lon.toFixed(2);
@@ -110,8 +110,7 @@ export function CitySearchBar() {
         })
         .then(coord => {
             getCityInfoSevenDay(coord.lat, coord.lon).then((data) => {
-                console.log(data);
-                let weatherInfo = {
+                let weatherInfo: any = {
                     description: data.current.weather[0].description,
                     currentTemp: data.current.feels_like,
                     minTemp: data.daily[0].temp.min,
