@@ -1,11 +1,11 @@
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
-import {addCity} from '../Reducers/CityListSlice';
-import { getCityInfo, convertCityToCoord, convertZipcodeToCoord, getCityInfoSevenDay } from '../Helper/ApiCalls';
+import { convertCityToCoord, convertZipcodeToCoord, getCityInfoSevenDay } from '../Helper/ApiCalls';
 import AddIcon from '@material-ui/icons/Add';
-import { TextField, FormControl, Select, MenuItem } from '@material-ui/core';
+import { TextField } from '@material-ui/core';
 import '../style/searchBar.css';
 import { addWeatherInfo } from '../Reducers/WeatherInfoSlice';
+import { getWeatherDayInfo } from '../Helper/HelperFunctions';
 
 export function CitySearchBar() {
 
@@ -70,13 +70,20 @@ export function CitySearchBar() {
             getCityInfoSevenDay(coord.lat, coord.lon).then((data) => {
                 let weatherInfo = {
                     description: data.current.weather[0].description,
-                    currentTemp: data.current.feels_like,
-                    minTemp: data.daily[0].temp.min,
-                    maxTemp: data.daily[0].temp.max,
+                    currentTemp: data.current.feels_like + "C",
+                    minTemp: data.daily[0].temp.min + "C",
+                    maxTemp: data.daily[0].temp.max + "C",
                     windSpd: data.current.wind_speed,
-                    precipitation:data.daily[0].rain,
+                    precipitation: (data.daily[0].rain == undefined) ? 0 : data.daily[0].rain,
                     humidity:data.current.humidity,
+                    dailyInfo:[],
                 }
+                
+                for(let i=1; i<8; i++) {
+                    weatherInfo.dailyInfo.push(getWeatherDayInfo(data.daily[i]));    
+                }
+                
+                console.log(weatherInfo);
                 
                 setError(false);
                 dispatch(addWeatherInfo(weatherInfo));

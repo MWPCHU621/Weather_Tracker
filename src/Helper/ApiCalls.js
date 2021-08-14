@@ -1,15 +1,3 @@
-//fetches a single day's worth of weather data for a given city name
-export function getCityInfo(cityName){
-    return fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=c5bc463716cbbe021b14ac41ed34c9de`)
-        .then(res => res.json())
-}
-
-//fetches 5 days worth of weather data for a given city name
-export function getCityInfoFiveDay(cityName) {
-    return fetch(`https://api.openweathermap.org/data/2.5/forecast/daily?q=${cityName}&units=metric&cnt=5&appid=c5bc463716cbbe021b14ac41ed34c9de`)
-        .then(res => res.json())
-}
-
 //converts city name to lat long for use in api call
 export function convertCityToCoord(cityName) {
     return fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=c5bc463716cbbe021b14ac41ed34c9de`)
@@ -24,6 +12,6 @@ export function convertZipcodeToCoord(zipcode, country) {
 
 //fetches 7 days worth of weather data for a given city name
 export function getCityInfoSevenDay(lat,long) {
-    return fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&exclude=minutely,hourly,alerts&appid=c5bc463716cbbe021b14ac41ed34c9de`)
+    return fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&exclude=minutely,hourly,alerts&units=metric&appid=c5bc463716cbbe021b14ac41ed34c9de`)
         .then(res => res.json())
 }

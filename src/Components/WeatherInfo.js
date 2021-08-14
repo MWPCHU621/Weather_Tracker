@@ -1,11 +1,11 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { getCityInfoFiveDay } from '../Helper/ApiCalls';
 import { getWeatherInfo, addWeatherInfo, getWeatherInfoBool } from '../Reducers/WeatherInfoSlice';
 import { DailyInfo } from './DailyInfo';
 import { getWeatherDayInfo, weatherToIcon } from '../Helper/HelperFunctions';
 import { Button } from '@material-ui/core';
 import RefreshIcon from '@material-ui/icons/Refresh';
 import '../style/weatherInfo.css';
+import { CitySearchBar } from './SearchBar';
 
 export function WeatherInfo() {
 
@@ -21,22 +21,20 @@ export function WeatherInfo() {
     } else {
         return (
             <div className="weather_info_container">
-                <div className="refresh">
-                    <Button size="large" onClick={() => fetchWeatherData(cityWeatherInfo.name)}><RefreshIcon /></Button>
-                </div>
-                <h1 className="city_name">{cityWeatherInfo.name}</h1>
                 <div className="detailed_city">
-                    <div className="detailed_city_icon">{weatherToIcon(cityWeatherInfo.currentWeather)}</div>
                     <div className="detailed_city_info">
-                        <p>{cityWeatherInfo.currentTemp}</p>
+                        <p>Current Temperature: {cityWeatherInfo.currentTemp}</p>
+                        <p>Min Temperature: {cityWeatherInfo.minTemp}</p>
+                        <p>Max Temperature: {cityWeatherInfo.maxTemp}</p>
                         <p>{cityWeatherInfo.description[0].toUpperCase() + cityWeatherInfo.description.substring(1)}</p>
-                        <p>Wind: {cityWeatherInfo.wind}</p>
-                        <p>Pressure {cityWeatherInfo.pressure}</p>
+                        <p>Wind: {cityWeatherInfo.windSpd}</p>
+                        <p>Precipitation: {cityWeatherInfo.precipitation}</p>
+                        <p>Humidity: {cityWeatherInfo.humidity}</p>
                     </div>
                 </div>
                 <div className="daily_weather_data">
                     {
-                        cityWeatherInfo.dailyWeatherData.map((dailyData, index) => {
+                        cityWeatherInfo.dailyInfo.map((dailyData, index) => {
                             return (<DailyInfo key={index} dailyInfo={dailyData}/>)
                         })
                     }
@@ -44,28 +42,5 @@ export function WeatherInfo() {
                 
             </div>
         );
-    }
-
-    //fetches new 5 day weather data and overwrites current 5 day weather data in the store.
-    function fetchWeatherData(city) {
-        getCityInfoFiveDay(city)
-        .then(data => {
-            //formatting incoming data for easy access and display to be stored in the store.
-            let newData = {
-                name: data.city.name,
-                currentTemp: (Math.round(data.list[0].temp.day) + "C"),
-                currentWeather: data.list[0].weather[0].main,
-                description: data.list[0].weather[0].description,
-                wind: ( Math.round(data.list[0].speed) + "ms " + data.list[0].deg + " deg"),
-                pressure: data.list[0].pressure,
-                dailyWeatherData: [],
-            }
-
-            //loop to create and push modified daily info to newData to be added to store.
-            for(let i=0; i<5; i++) {
-                newData.dailyWeatherData.push(getWeatherDayInfo(data.list[i]));
-            }
-            dispatch(addWeatherInfo(newData));
-        })
     }
 }
