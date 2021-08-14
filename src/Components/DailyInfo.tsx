@@ -10,7 +10,6 @@ export function DailyInfo(props: any): JSX.Element {
             <div>{dailyInfo.date}</div>
             <div>{dailyInfo.dayOfWeek}</div>
             <div> { weatherToIcon(dailyInfo.weather) } </div>
-            <div>{dailyInfo.weather}</div>
             <div>{dailyInfo.temp}</div>
         </div>
     )
