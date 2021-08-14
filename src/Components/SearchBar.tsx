@@ -24,7 +24,7 @@ export function CitySearchBar(): JSX.Element {
             <form onSubmit={handleZipcodeSubmit} className="add_city_form">
                 <TextField 
                     className="search_zipcode_textarea textarea" 
-                    placeholder="a2c,ca" 
+                    placeholder="Example: a2c,ca" 
                     label="Search with zipcode, country code"
                     value={zipCountry} 
                     onChange={handleZipcodeChange} 
