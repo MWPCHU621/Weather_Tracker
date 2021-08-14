@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/Weather_Tracker/static/css/main.ce5899ca.chunk.css",
-    "main.js": "/Weather_Tracker/static/js/main.0d028aeb.chunk.js",
-    "main.js.map": "/Weather_Tracker/static/js/main.0d028aeb.chunk.js.map",
+    "main.css": "/Weather_Tracker/static/css/main.ef3c2085.chunk.css",
+    "main.js": "/Weather_Tracker/static/js/main.f5b1aac2.chunk.js",
+    "main.js.map": "/Weather_Tracker/static/js/main.f5b1aac2.chunk.js.map",
     "runtime-main.js": "/Weather_Tracker/static/js/runtime-main.792cd059.js",
     "runtime-main.js.map": "/Weather_Tracker/static/js/runtime-main.792cd059.js.map",
     "static/js/2.0a0e2f4e.chunk.js": "/Weather_Tracker/static/js/2.0a0e2f4e.chunk.js",
     "static/js/2.0a0e2f4e.chunk.js.map": "/Weather_Tracker/static/js/2.0a0e2f4e.chunk.js.map",
     "index.html": "/Weather_Tracker/index.html",
-    "static/css/main.ce5899ca.chunk.css.map": "/Weather_Tracker/static/css/main.ce5899ca.chunk.css.map",
+    "static/css/main.ef3c2085.chunk.css.map": "/Weather_Tracker/static/css/main.ef3c2085.chunk.css.map",
     "static/js/2.0a0e2f4e.chunk.js.LICENSE.txt": "/Weather_Tracker/static/js/2.0a0e2f4e.chunk.js.LICENSE.txt",
     "static/media/cloudy-day-1.c6120cb4.svg": "/Weather_Tracker/static/media/cloudy-day-1.c6120cb4.svg",
     "static/media/day.e170f8f7.svg": "/Weather_Tracker/static/media/day.e170f8f7.svg",
@@ -20,7 +20,7 @@
   "entrypoints": [
     "static/js/runtime-main.792cd059.js",
     "static/js/2.0a0e2f4e.chunk.js",
-    "static/css/main.ce5899ca.chunk.css",
-    "static/js/main.0d028aeb.chunk.js"
+    "static/css/main.ef3c2085.chunk.css",
+    "static/js/main.f5b1aac2.chunk.js"
   ]
 }
