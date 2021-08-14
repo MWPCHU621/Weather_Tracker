@@ -17,7 +17,7 @@ export function CitySearchBar(): JSX.Element {
     return (
         <div className="searchBar_container">
             <form onSubmit={handleCitySubmit} className="add_city_form">
-                <TextField className="search_city_textarea textarea" placeholder="City Name" label="Search with city name"value={cityName} onChange={handleCityChange}/>
+                <TextField className="search_city_textarea textarea" placeholder="Example: toronto" label="city name"value={cityName} onChange={handleCityChange}/>
                 <button type="submit" className="add_city_btn"><AddIcon /></button>
             </form>
 
@@ -25,7 +25,7 @@ export function CitySearchBar(): JSX.Element {
                 <TextField 
                     className="search_zipcode_textarea textarea" 
                     placeholder="Example: a2c,ca" 
-                    label="Search with zipcode, country code"
+                    label="zipcode, country code"
                     value={zipCountry} 
                     onChange={handleZipcodeChange} 
                 />
