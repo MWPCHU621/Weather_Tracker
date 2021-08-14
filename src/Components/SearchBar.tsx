@@ -69,7 +69,6 @@ export function CitySearchBar(): JSX.Element {
         })
         .then(coord => {
             getCityInfoSevenDay(coord.lat, coord.lon).then((data) => {
-                console.log(data);
                 let weatherInfo: any = {
                     description: data.current.weather[0].description,
                     currentTemp: data.current.feels_like + "C",
