@@ -1,11 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { getWeatherInfo, addWeatherInfo, getWeatherInfoBool } from '../Reducers/WeatherInfoSlice';
+import { getWeatherInfo, getWeatherInfoBool } from '../Reducers/WeatherInfoSlice';
 import { DailyInfo } from './DailyInfo';
-import { getWeatherDayInfo, weatherToIcon } from '../Helper/HelperFunctions';
-import { Button } from '@material-ui/core';
-import RefreshIcon from '@material-ui/icons/Refresh';
 import '../style/weatherInfo.css';
-import { CitySearchBar } from './SearchBar';
 
 export function WeatherInfo() {
 
@@ -26,7 +22,7 @@ export function WeatherInfo() {
                         <p>Current Temperature: {cityWeatherInfo.currentTemp}</p>
                         <p>Min Temperature: {cityWeatherInfo.minTemp}</p>
                         <p>Max Temperature: {cityWeatherInfo.maxTemp}</p>
-                        <p>{cityWeatherInfo.description[0].toUpperCase() + cityWeatherInfo.description.substring(1)}</p>
+                        <p>Weather: {cityWeatherInfo.description[0].toUpperCase() + cityWeatherInfo.description.substring(1)}</p>
                         <p>Wind Speed: {cityWeatherInfo.windSpd}</p>
                         <p>Precipitation: {cityWeatherInfo.precipitation}</p>
                         <p>Humidity: {cityWeatherInfo.humidity}</p>
@@ -39,7 +35,6 @@ export function WeatherInfo() {
                         })
                     }
                 </div>
-                
             </div>
         );
     }

@@ -1,22 +1,7 @@
-.daily_weather_data {
-    display:flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    clear:left;
-    margin-left:38px;
-}
+
 
 .detailed_city {
     margin-bottom:3em;
-}
-
-.detailed_city_icon {
-    float:left;
-    height: 200px;
-}
-
-.refresh {
-    float:right;
 }
 
 .city_name {
@@ -26,4 +11,25 @@
 p {
     font-size:x-large;
     font-family: 'Times New Roman', Times, serif;
+}
+
+@media only screen and (min-width: 600px) {
+    .daily_weather_data {
+        display:flex;
+        flex-direction: row;
+        justify-content: flex-start;
+    }
+}
+
+@media only screen and (max-width: 599px) {
+    .daily_weather_data {
+        display:flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+    }
+
+    .daily_info {
+        margin-bottom: 2em;
+    }
 }

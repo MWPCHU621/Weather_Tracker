@@ -1,7 +1,18 @@
-.daily_weather_info {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    margin-right:20px;
+@media only screen and (min-width: 600px) {
+    .daily_weather_info {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        margin-right:20px;
+    }
 }
 
+@media only screen and (max-width: 599px) {
+    .daily_weather_info {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        margin-right:20px;
+        margin-bottom: 2em;
+    }
+}
