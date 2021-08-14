@@ -1,12 +1,12 @@
 //converts city name to lat long for use in api call
 export function convertCityToCoord(cityName) {
-    return fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=c5bc463716cbbe021b14ac41ed34c9de`)
+    return fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=c5bc463716cbbe021b14ac41ed34c9de`)
         .then(res => res.json())
 }
 
 //converts zip code to lat long for use in api call
 export function convertZipcodeToCoord(zipcode, country) {
-    return fetch(`http://api.openweathermap.org/geo/1.0/zip?zip=${zipcode},${country}&appid=c5bc463716cbbe021b14ac41ed34c9de`)
+    return fetch(`https://api.openweathermap.org/geo/1.0/zip?zip=${zipcode},${country}&appid=c5bc463716cbbe021b14ac41ed34c9de`)
         .then(res => res.json())
 }
 
