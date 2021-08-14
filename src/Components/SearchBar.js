@@ -12,19 +12,23 @@ export function CitySearchBar() {
     const dispatch = useDispatch();
     const [cityName, setCityName] = useState("");
     const [error, setError] = useState(false);
-    const [zipcode, setZipcode] = useState("");
-    const [countryCode, setCountryCode] = useState("");
+    const [zipCountry, setZipcode] = useState("");
     
     return (
         <div className="searchBar_container">
             <form onSubmit={handleCitySubmit} className="add_city_form">
-                <TextField className="add_city_textarea" placeholder="Type City Name" value={cityName} onChange={handleCityChange}/>
+                <TextField className="search_city_textarea textarea" placeholder="City Name" label="Search with city name"value={cityName} onChange={handleCityChange}/>
                 <button type="submit" className="add_city_btn"><AddIcon /></button>
             </form>
 
             <form onSubmit={handleZipcodeSubmit} className="add_city_form">
-                <TextField className="add_city_textarea" placeholder="Type first 3 letters of the zipcode" value={zipcode} inputProps={{maxLength: 3}} onChange={handleZipcodeChange} />
-                <TextField className="add_city_textarea" placeholder="Type the 2 letter country code" value={countryCode} inputProps={{maxLength: 2}} onChange={handleCountryChange} />
+                <TextField 
+                    className="search_zipcode_textarea textarea" 
+                    placeholder="a2c,ca" 
+                    label="Search with zipcode, country code"
+                    value={zipCountry} 
+                    onChange={handleZipcodeChange} 
+                />
                 <button type="submit" className="add_city_btn"> <AddIcon /> </button>
             </form>
 
@@ -40,10 +44,6 @@ export function CitySearchBar() {
         setZipcode(e.target.value);
     }
 
-    function handleCountryChange(e) {
-        setCountryCode(e.target.value);
-    }
-
     function handleCitySubmit(e) {
         e.preventDefault();
         searchCity(cityName);
@@ -51,11 +51,10 @@ export function CitySearchBar() {
 
     function handleZipcodeSubmit(e) {
         e.preventDefault();
-        searchZipCode(zipcode, countryCode);
+        searchZipCode(zipCountry);
     }
     
     function searchCity (city) {
-        
         convertCityToCoord(city).then((data) => {
             const lat = data[0].lat.toFixed(2);
             const lon = data[0].lon.toFixed(2);
@@ -83,20 +82,21 @@ export function CitySearchBar() {
                     weatherInfo.dailyInfo.push(getWeatherDayInfo(data.daily[i]));    
                 }
                 
-                console.log(weatherInfo);
-                
                 setError(false);
                 dispatch(addWeatherInfo(weatherInfo));
             })
             .catch(error => setError(true));
-
             
         })
         .catch(error => setError(true));
 
     }
 
-    function searchZipCode(zipcode, countryCode) {
+    function searchZipCode(zipCountry) {
+        const strSplit = zipCountry.split(",");
+        const zipcode = strSplit[0];
+        const countryCode = strSplit[1];
+        console.log(zipcode, countryCode);
         convertZipcodeToCoord(zipcode, countryCode).then(data => {
             const lat = data.lat.toFixed(2);
             const lon = data.lon.toFixed(2);
@@ -110,6 +110,7 @@ export function CitySearchBar() {
         })
         .then(coord => {
             getCityInfoSevenDay(coord.lat, coord.lon).then((data) => {
+                console.log(data);
                 let weatherInfo = {
                     description: data.current.weather[0].description,
                     currentTemp: data.current.feels_like,
@@ -118,6 +119,11 @@ export function CitySearchBar() {
                     windSpd: data.current.wind_speed,
                     precipitation:data.daily[0].rain,
                     humidity:data.current.humidity,
+                    dailyInfo: [],
+                }
+
+                for(let i=1; i<8; i++) {
+                    weatherInfo.dailyInfo.push(getWeatherDayInfo(data.daily[i]));    
                 }
                 
                 setError(false);

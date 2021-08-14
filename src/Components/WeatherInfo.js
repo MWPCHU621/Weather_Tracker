@@ -27,7 +27,7 @@ export function WeatherInfo() {
                         <p>Min Temperature: {cityWeatherInfo.minTemp}</p>
                         <p>Max Temperature: {cityWeatherInfo.maxTemp}</p>
                         <p>{cityWeatherInfo.description[0].toUpperCase() + cityWeatherInfo.description.substring(1)}</p>
-                        <p>Wind: {cityWeatherInfo.windSpd}</p>
+                        <p>Wind Speed: {cityWeatherInfo.windSpd}</p>
                         <p>Precipitation: {cityWeatherInfo.precipitation}</p>
                         <p>Humidity: {cityWeatherInfo.humidity}</p>
                     </div>

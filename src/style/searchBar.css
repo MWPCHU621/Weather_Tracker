@@ -1,17 +1,6 @@
-.searchBar_container {
-    border-bottom: 2px solid black;
-    margin:10px;
-}
-
-.add_city_form {
-    display:flex;
-    justify-content: flex-end;
-}
-
-.add_city_textarea {
+.textarea {
     padding:0px 0 5px 0 !important;
     margin: 5px 0 10px 0 !important;
-    width:85%;
 }
 
 .add_city_btn {
@@ -32,4 +21,44 @@
     font-size:medium;
     text-align: center;
     color:red;
+}
+
+@media only screen and (min-width: 600px) {
+    .searchBar_container {
+        border-bottom: 2px solid black;
+        margin:10px;
+        display:flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+    
+    .add_city_form {
+        width:50%;
+        display:flex;
+        flex-direction: row;
+    }
+
+    .textarea {
+        width:100%;
+    }
+}
+
+@media only screen and (max-width: 599px) {
+    .searchBar_container {
+        border-bottom: 2px solid black;
+        margin:10px;
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    
+    .add_city_form {
+        width:100%;
+        display:flex;
+        flex-direction: row;
+    }
+
+    .textarea {
+        width:100%;
+    }
 }
