@@ -6,6 +6,7 @@ import { TextField } from '@material-ui/core';
 import '../style/searchBar.css';
 import { addWeatherInfo } from '../Reducers/WeatherInfoSlice';
 import { getWeatherDayInfo } from '../Helper/HelperFunctions';
+import { isConstructorDeclaration } from 'typescript';
 
 export function CitySearchBar(): JSX.Element {
 
@@ -13,12 +14,13 @@ export function CitySearchBar(): JSX.Element {
     const [cityName, setCityName] = useState("");
     const [error, setError] = useState(false);
     const [zipCountry, setZipcode] = useState("");
+
     
     return (
         <div className="searchBar_container">
             <form onSubmit={handleCitySubmit} className="add_city_form">
-                <TextField className="search_city_textarea textarea" placeholder="Example: toronto" label="city name"value={cityName} onChange={handleCityChange}/>
-                <button type="submit" className="add_city_btn"><AddIcon /></button>
+                <TextField className="search_city_textarea textarea" placeholder="Example: toronto" label="city name" value={cityName} onChange={handleCityChange} />
+                <button type="submit" data-testid="citySearchBtn" className="add_city_btn"><AddIcon /></button>
             </form>
 
             <form onSubmit={handleZipcodeSubmit} className="add_city_form">
@@ -29,7 +31,7 @@ export function CitySearchBar(): JSX.Element {
                     value={zipCountry} 
                     onChange={handleZipcodeChange} 
                 />
-                <button type="submit" className="add_city_btn"> <AddIcon /> </button>
+                <button type="submit" data-testid="zipSearchBtn" className="add_city_btn"> <AddIcon /> </button>
             </form>
 
             <p className={error ? 'show_error' : 'hide_error'}>Invalid city or zipcode country code combination. Please enter a valid input</p>
@@ -67,6 +69,7 @@ export function CitySearchBar(): JSX.Element {
         })
         .then(coord => {
             getCityInfoSevenDay(coord.lat, coord.lon).then((data) => {
+                console.log(data);
                 let weatherInfo: any = {
                     description: data.current.weather[0].description,
                     currentTemp: data.current.feels_like + "C",

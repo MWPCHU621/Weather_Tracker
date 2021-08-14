@@ -15,6 +15,7 @@
     "@types/react": "^17.0.17",
     "@types/react-dom": "^17.0.9",
     "material-ui-search-bar": "^1.0.0",
+    "msw": "^0.34.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.4",

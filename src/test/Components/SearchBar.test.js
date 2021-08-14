@@ -1,49 +1,43 @@
-// Link.react.test.js
-import { render as rtlRender, screen } from '@testing-library/react';
-import userEvent, { keyboard } from '@testing-library/user-event';
-import React from 'react';
-import { Provider, connect } from 'react-redux';
-import { createStore } from 'redux';
+import userEvent from '@testing-library/user-event';
+import { rest } from 'msw';
+import { setupServer } from 'msw/node'
 import { CitySearchBar } from '../../Components/SearchBar';
-import citylistReducer from '../../Reducers/CityListSlice';
+import { render, screen } from '../test-utils';
+
+export const handlers = [
+    rest.get('https://api.openweathermap.org/data/2.5/onecall', (req, res, ctx) => {
+        return res(ctx.json(fakeData), ctx.delay(150))
+    })
+  ]
+  
+  const server = setupServer(...handlers);
+  
+  // Enable API mocking before tests.
+  beforeAll(() => server.listen())
+  
+  // Reset any runtime request handlers we may add during the tests.
+  afterEach(() => server.resetHandlers())
+  
+  // Disable API mocking after the tests are done.
+  afterAll(() => server.close())
 
 describe("Search Bar Component Test Suite", () => {
-
-    const SearchBar = connect((state) => ({cityList: state.cityList}))(CitySearchBar);
-
-    const initialReducerState = {
-        cityList: [],
-    }
-
-    const reducer = citylistReducer;
-
-    const render = (
-        ui,
-        {
-            initialState = initialReducerState,
-            store = createStore(reducer, initialState),
-            ...renderOptions
-        } = {},
-        ) => {
-            const Wrapper = ({children}) => <Provider store={store}>{children}</Provider>
-            
-            return rtlRender(ui, {wrapper: Wrapper, ...renderOptions})
-        };
 
     it('can render search bar with default redux', () => {
         render(<CitySearchBar />);
 
-        expect(screen.getByPlaceholderText("Type City Name")).toBeVisible();
+        expect(screen.getByPlaceholderText("Example: toronto")).toBeVisible();
     });
 
     it('should have error message with invalid city', () => {
         render(<CitySearchBar />);
-        const inputArea = screen.getByPlaceholderText("Type City Name");
+
+        const inputArea = screen.getByPlaceholderText("Example: toronto");
 
         userEvent.type(inputArea, "test");
 
         userEvent.type(inputArea, '{enter}');
 
-        expect(screen.getByText("Invalid city. Please enter a valid city")).toBeVisible();
+        expect(screen.getByText("Invalid city or zipcode country code combination. Please enter a valid input")).toBeVisible();
     });
 });

@@ -11,6 +11,5 @@ test('renders search bar properly', () => {
     </Provider>
   );
 
-  expect(getByPlaceholderText("Type City Name")).toBeInTheDocument();
-  expect (getByText("Recent Locations")).toBeInTheDocument();
+  expect(getByPlaceholderText("Example: toronto")).toBeInTheDocument();
 });
